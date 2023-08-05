@@ -9,6 +9,7 @@ function App() {
   let [showResult , setShowresult] = useState(false);
   let [btnClicked , setbtnClicked] = useState(false);
   const handleNextOption = () =>{
+    setbtnClicked(false)
     const nextQuestion = currentQuestion+1;
     if(nextQuestion < questions.length){
       setCurrentquestion(nextQuestion)
@@ -49,6 +50,7 @@ const handleplayAgain =()=> {
       <div className='answer-section'>
         {questions[currentQuestion].answerOptions.map((ans,i)=>{
 return <button 
+className= {`button ${btnClicked & ans.isCorrect? "correct" : "button"}`}
 disabled = {btnClicked} key={i} onClick={()=> handleAnswerOption(ans.isCorrect)}>{ans.answerText}</button>
         })}
        
